@@ -1,18 +1,43 @@
-const containerDiv = document.querySelector(".container");
-let gridDiv;
+const container = document.querySelector(".container");
+const resetBtn= document.querySelector("#reset");
 
-for (let i = 0; i <= 272; i++) {
-    addDiv();
-    containerDiv.appendChild(gridDiv);
-    gridDiv.addEventListener("mouseover", func, false);
+function createGrid(num) {
+
+    for (let i = 0; i < num * num; i++) {
+
+        container.style.gridTemplateRows = `repeat(${num}, 1fr)`;
+        container.style.gridTemplateColumns = `repeat(${num}, 1fr)`;
+
+        let squareDiv = document.createElement('div');
+        container.appendChild(squareDiv);
+        
+        squareDiv.addEventListener("mouseover", e => {
+            squareDiv.style.backgroundColor = "black";
+        });
+
+        function resetGrid(){
+            resetBtn.addEventListener('click', e => {
+                squareDiv.style.backgroundColor = "white";
+            });
+        }
+        resetGrid();
+    }
 }
 
-function func() {
-    this.setAttribute("style", "background-color: blue;")
-}
-function addDiv() {
-    gridDiv = document.createElement('div');
-}
+createGrid(16);
 
+function resetSize() {
+    let number;
+    do {
+        number = parseInt(prompt("How many squares per side? (MAX 100)"));
+    }
+    while (number > 100);
 
+    container.style.gridTemplateRows = `repeat(${number}, 1fr)`;
+    container.style.gridTemplateColumns = `repeat(${number}, 1fr)`;
+    createGrid(number);
+}   
 
+resetBtn.addEventListener('click', () => {
+    resetSize();
+});
