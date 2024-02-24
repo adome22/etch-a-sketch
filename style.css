@@ -1,24 +1,38 @@
 * {
+    font-family: "Micro 5", sans-serif;
     box-sizing: border-box;
+    
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    background-color: green;
+}
+
+.page-content {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+h1 {
+    font-size: 50px;
 }
 
 .container {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
+    width: 600px;
+    height: 600px;
+    display: grid;
+    background-color: white;
 }
 
-.container > div {
-    border: 1px solid black;
-    width: 25px;
-    height: 25px;
-}
-
-.container > div:nth-child(17n + 1) {
+#reset {
     width: 100%;
-    border: 0;
-    height: 0;
+    padding: 10px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border: 1px solid black;
+    font-size: 50px;
+    background-color: blue;
 }
-
-
